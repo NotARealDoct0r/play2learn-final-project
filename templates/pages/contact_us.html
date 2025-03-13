@@ -1,0 +1,8 @@
+{% extends "_base_vue.html" %}
+
+{% block title %}Contact Us{% endblock %}
+{% block main %}
+    <h2>Contact Us</h2>
+    <p>Users can fill out a simple contact us form that sends an email to the administrator of the site.</p>
+    <p><a href="{% url 'pages:contact-us' %}">Click Here</a></p>
+{% endblock %}
