@@ -1,4 +1,8 @@
 from django.urls import path
 
+from .views import ReviewListView
+
 app_name = 'reviews'
-urlpatterns = []
+urlpatterns = [
+    path('', ReviewListView.as_view(), name='list'),
+]
