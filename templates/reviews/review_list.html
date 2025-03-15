@@ -2,11 +2,16 @@
 
 {% block title %}Reviews{% endblock %}
 {% block main %}
+  <a class="btn btn-success btn-sm float-end" href="{% url 'reviews:create' %}">
+    + New Review
+  </a>
   <h2>Reviews</h2>
   <ul class="list-group list-group-flush mb-3">
     {% for review in review_list %}
       <li class="list-group-item">
-        <a href="{{ review.get_absolute_url }}">{{ review.message }}</a>
+        <a href="{{ review.get_absolute_url }}">{{ review.title }}</a>
+        <a href="{% url 'reviews:update' review.pk %}"
+          class="btn btn-info btn-sm float-end me-2">Update</a>
       </li>
     {% endfor %}
   </ul>
