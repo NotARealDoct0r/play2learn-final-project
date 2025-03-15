@@ -5,7 +5,9 @@
   <h2>Reviews</h2>
   <ul class="list-group list-group-flush mb-3">
     {% for review in review_list %}
-      <li class="list-group-item">{{ review.message }}</li>
+      <li class="list-group-item">
+        <a href="{{ review.get_absolute_url }}">{{ review.message }}</a>
+      </li>
     {% endfor %}
   </ul>
 {% endblock %}
