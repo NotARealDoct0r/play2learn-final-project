@@ -16,6 +16,9 @@ class ContactUsForm(forms.Form):
     )
     last_name = forms.CharField()
     email = forms.EmailField()
+    comments = forms.CharField(
+        widget=forms.Textarea(attrs={'cols': '75', 'rows': '5'})
+    )
 
     confirmation = forms.BooleanField(
         label = 'I certify that the information I have provided is true.',
