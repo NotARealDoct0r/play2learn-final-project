@@ -2,7 +2,7 @@ import html
 from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
 
-from users.utils.email import send_email
+from common.utils.email import send_email
 
 from .forms import ContactUsForm
 
