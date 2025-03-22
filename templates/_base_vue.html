@@ -35,24 +35,30 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'games:math-facts' %}">Math Facts</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Log in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sign up</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
-                role="button" data-toggle="dropdown" aria-haspopup="true"
+          {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+            </li>
+          {% else %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" 
+                role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-              Me
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">My Account</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Log out</a>
-            </div>
-          </li>
+                Me
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">My Account</a>
+                <div class="dropdown-divider"></div>
+                <form method="post" action="{% url 'account_logout' %}">
+                  {% csrf_token %}
+                  <button class="btn dropdown-item">Log out</button>
+                </form>
+              </div>
+            </li>
+          {% endif %}
         </ul>
         <form class="row my-2 my-lg-0 row">
           <input class="form-control me-sm-2 col" type="search"
@@ -73,6 +79,11 @@
       <div class="float-end m-1 me-2">Copyright &copy; 2025 Final Project</div>
       <nav>
         <ul class="nav">
+          {% if user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/">Admin</a>
+            </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'pages:contact-us' %}">Contact Us</a>
           </li>
