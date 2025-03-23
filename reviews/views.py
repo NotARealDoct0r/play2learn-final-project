@@ -11,6 +11,10 @@ class ReviewCreateView(CreateView):
     model = Review
     form_class = ReviewForm
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class ReviewDeleteView(DeleteView):
     model = Review
     success_url = reverse_lazy('reviews:list')
