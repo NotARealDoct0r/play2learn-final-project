@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <th>Review</th>
-          <th>Creator</th>
+          <th class="text-end">Creator</th>
         </tr>
       </thead>
       <tbody>
@@ -20,7 +20,7 @@
             <td>
               <a href="{{ review.get_absolute_url }}">{{ review.title }}</a>
             </td>
-            <td>
+            <td class="text-end">
               {% if review.user == user %}
                 <a href="{% url 'reviews:update' review.slug %}">
                   <i class="fas fa-pencil-alt"></i>
