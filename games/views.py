@@ -8,3 +8,9 @@ class MathFactsView(TemplateView):
 
 class AnagramHuntView(TemplateView):
     template_name = "anagram-hunt.html"
+
+class AnagramHuntTrackingView(TemplateView):
+    template_name = "anagram-hunt-tracking.html"
+
+class MathFactsTrackingView(TemplateView):
+    template_name = "math-facts-tracking.html"

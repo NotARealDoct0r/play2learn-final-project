@@ -161,6 +161,7 @@ export default {
     async recordScore() {
       // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
       // to record the score on the backend
+      // time user finished the game, game settings (multiplication, max number: 20), final score for each game
     }
   },
   computed: {
