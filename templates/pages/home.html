@@ -5,10 +5,10 @@
     <h2>Welcome!!</h2>
     <p>Ready to play?</p>
     
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="reviewCarouselIndicators" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators" style="margin-bottom: -10px; list-style-type: none;">
             {% for review in review_list %}
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"
+                <li data-bs-target="#reviewCarouselIndicators" data-bs-slide-to="{{ forloop.counter0 }}"
                     class="{% if forloop.first %}active{% endif %}"
                     style="width: 30px; height: 5px; background-color: #007bff; border-radius: 2px;">
                 </li>
@@ -34,11 +34,11 @@
             {% endfor %}
         </div>
             
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+        <a class="carousel-control-prev" href="#reviewCarouselIndicators" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 50%;"></span>
             <span class="visually-hidden">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+        <a class="carousel-control-next" href="#reviewCarouselIndicators" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.5); padding: 10px; border-radius: 50%;"></span>
             <span class="visually-hidden">Next</span>
         </a>

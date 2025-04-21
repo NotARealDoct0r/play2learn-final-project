@@ -127,19 +127,27 @@ export default {
       this.correctGuesses = [];
     },
     async recordScore() {
-      //TODO when game finishes, make an Ajax call with axios to record the score on the backend
-      // time user finished the game, game settings (word length), final score for each game
-      // try {
-      //   const response = await this.axios.post('/api/record-score/', {
-      //     score: this.score,
-      //     finished_at: new Date().toISOString(), // Timestamp when game finished
-      //     game_settings: this.wordLength // game setting
-      //   });
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+      
+      try {
+        const response = await this.axios.post(
+          '/api/record-score/',
+          {
+            score: this.score,
+            game_settings: {
+              word_length: this.wordLength
+            },
+            game_type: "anagram"
+          }, {
+            headers: {
+              'X-CSRFToken': csrfToken,
+            }
+        });
 
-      //   console.log("Score recorded successfully:", response.data);
-      // } catch (error) {
-      //   console.error("Failed to record score:", error);
-      // }
+        console.log('Score saved:', response.data);
+      } catch (error) {
+        console.error('Failed to save score:', error);
+      }
     }
   },
   watch: {

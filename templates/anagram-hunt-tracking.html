@@ -1,7 +1,35 @@
 {% extends "_base_vue.html" %}
 
 {% block title %}Anagram Hunt{% endblock %}
+
 {% block main %}
-  <h1>Anagram Hunt</h1>
+  <h1>Anagram Hunt</h1><br>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Game Tracking History</h5>
+      <ul>
+        {% for game in history %}
+          <li>Username: {{ game.user.username }}<br>
+            Word Length: {{ game.word_length }}<br> 
+            Score: {{ game.score }}<br> 
+            {{ game.finished_at }}</li>
+        {% empty %}
+          <li>No games played yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
   
-{% endblock %} 
+    <div class="col-md-6">
+      <h5>Top 3 Leaderboard</h5>
+      <ul>
+        {% for game in leaderboard %}
+          <li>Username: {{ game.user.username }}<br>
+            Word Length: {{ game.word_length }}<br> 
+            Score: {{ game.score }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>  
+
+{% endblock %}

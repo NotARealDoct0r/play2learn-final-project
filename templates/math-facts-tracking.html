@@ -1,7 +1,37 @@
 {% extends "_base_vue.html" %}
 
 {% block title %}Math Facts{% endblock %}
+
 {% block main %}
-  <h1>Math Facts</h1>
+  <h1>Math Facts</h1><br>
   
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Game Tracking History</h5>
+      <ul>
+        {% for game in history %}
+          <li>Username: {{ game.user.username }}<br>
+            Operation: {{ game.operation }}<br>
+            Max Number: {{ game.max_number }}<br> 
+            Score: {{ game.score }}<br> 
+            {{ game.finished_at }}</li>
+        {% empty %}
+          <li>No games played yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  
+    <div class="col-md-6">
+      <h5>Top 3 Leaderboard</h5>
+      <ul>
+        {% for game in leaderboard %}
+          <li>Username: {{ game.user.username }}<br>
+            Operation: {{ game.operation }}<br>
+            Max Number: {{ game.max_number }}<br> 
+            Score: {{ game.score }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>  
+
 {% endblock %} 

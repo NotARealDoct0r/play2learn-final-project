@@ -159,9 +159,28 @@ export default {
       }
     },
     async recordScore() {
-      // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
-      // to record the score on the backend
-      // time user finished the game, game settings (multiplication, max number: 20), final score for each game
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+      
+      try {
+        const response = await this.axios.post(
+          '/api/record-score/',
+          {
+            score: this.score,
+            game_settings: {
+              operation: this.operation,
+              max_number: this.maxNumber
+            },
+            game_type: "math"
+          }, {
+            headers: {
+              'X-CSRFToken': csrfToken,
+            }
+        });
+
+        console.log('Score saved:', response.data);
+      } catch (error) {
+        console.error('Failed to save score:', error);
+      }
     }
   },
   computed: {
