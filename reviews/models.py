@@ -7,6 +7,7 @@ from common.utils.text import unique_slug
 class Review(models.Model):
     title = models.TextField(max_length=100)
     message = models.TextField(max_length=200)
+    featured = models.BooleanField(default=False)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT
     )
